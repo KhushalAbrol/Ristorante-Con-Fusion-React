@@ -3,6 +3,7 @@ import { Card, CardImg, CardText, CardBody, CardTitle, Breadcrumb, BreadcrumbIte
 import { Link } from 'react-router-dom';
 import {Control, LocalForm, Errors  } from 'react-redux-form';
 import { Loading } from './LoadingComponent';
+import { baseUrl } from '../shared/baseUrl';
 
 const maxLength = (len) => (val) => !(val) || (val.length <= len);
 const minLength = (len) => (val) => val && (val.length >= len);
@@ -33,7 +34,6 @@ const minLength = (len) => (val) => val && (val.length >= len);
                 <div>
                     <Button outline onClick={this.toggleModal} class="btn btn-dark"><span class="fa fa-pencil-square-o"></span>  Submit Comment</Button>
                     <Modal isOpen={this.state.isModalOpen} toggle={this.toggleModal}>
-
                         <ModalHeader toggle={this.toggleModal}>Login</ModalHeader>
                         <ModalBody>
                             <LocalForm onSubmit={(values) => this.handleSubmit(values)}>
@@ -77,7 +77,7 @@ const minLength = (len) => (val) => val && (val.length >= len);
         return(
             <div className="col-12 col-md-5 m-1">
                 <Card>
-                    <CardImg width="100%" src={dish.image} alt={dish.name}/>
+                    <CardImg top src={baseUrl + dish.image} alt={dish.name} />
                     <CardBody>
                         <CardTitle>{dish.name}</CardTitle>
                         <CardText>{dish.description}</CardText>
