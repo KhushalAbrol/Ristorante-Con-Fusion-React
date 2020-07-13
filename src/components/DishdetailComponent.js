@@ -26,7 +26,7 @@ const minLength = (len) => (val) => val && (val.length >= len);
 
         handleSubmit(values) {
             this.toggleModal();
-            this.props.addComment(this.props.dishId, values.rating, values.author, values.comment);
+            this.props.postComment(this.props.dishId, values.rating, values.author, values.comment);
         }
 
         render(){
@@ -87,7 +87,7 @@ const minLength = (len) => (val) => val && (val.length >= len);
         )
     }
 
-    function RenderComments({comments, addComment, dishId}){
+    function RenderComments({comments, postComment, dishId}){
         const cmt = comments.map(comment => {
             return(
                 <li key={comment.id}>
@@ -105,7 +105,7 @@ const minLength = (len) => (val) => val && (val.length >= len);
                 <h4> Comments </h4>
                 <ul className="list-unstyled">
                     {cmt}
-                    <CommentForm dishId={dishId} addComment={addComment}/>
+                    <CommentForm dishId={dishId} postComment={postComment}/>
                 </ul>
             </div>
         )
@@ -145,7 +145,7 @@ const minLength = (len) => (val) => val && (val.length >= len);
                     </div>
                     <div className="row">
                         <RenderDish dish={props.dish} />
-                        <RenderComments comments={props.comments} addComment={props.addComment} dishId={props.dish.id}/>
+                        <RenderComments comments={props.comments} postComment={props.postComment} dishId={props.dish.id}/>
                     </div>
                 </div>
             );            
